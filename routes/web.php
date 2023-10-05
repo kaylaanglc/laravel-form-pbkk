@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/form', [FormController::class, 'formulir']);
 Route::post('/form', [FormController::class, 'show']);
 Route::get('/result', [FormController::class, 'result']);
-// Route::get('/admin', [FormController::class, 'admin']);
+Route::get('/admin', [FormController::class, 'admin']);
 
 // Route::get('/admin/edit/{id}', [FormController::class, 'edit'])->name('admin.edit');
 // Route::put('/admin/edit/{id}', [FormController::class, 'update'])->name('admin.update');

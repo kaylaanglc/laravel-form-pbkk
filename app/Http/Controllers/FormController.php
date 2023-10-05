@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\Password;
+use App\Models\Reviewer; // Import the Reviewer model
+
 
 class FormController extends Controller
 {
@@ -21,14 +23,15 @@ class FormController extends Controller
             'rating' => 'required|numeric|between:2.50,99.99',
         ]);
     
-        // // Store data in the "students" table
-        // $student = new Student();
-        // $student->name = $request->name;
-        // $student->email = $request->email;
-        // $student->phone = $request->phone;
-        // $student->image = $request->image->getClientOriginalName();
-        // $student->rating = $request->rating;
-        // $student->save();
+        // Store data in the "reviewers" table
+        $reviewer = new Reviewer();
+        $reviewer->name = $request->name;
+        $reviewer->email = $request->email;
+        $reviewer->phone = $request->phone;
+        $reviewer->product = $request->product;
+        $reviewer->image = $request->image->getClientOriginalName();
+        $reviewer->rating = $request->rating;
+        $reviewer->save();
     
         // Store the results in the session
         $results = [
@@ -45,17 +48,17 @@ class FormController extends Controller
     public function result(){
         $results = session()->get('results');
         
-        // Retrieve the student data from the database
-        //$student = Student::where('email', $results['email'])->first();
+        // Retrieve the reviewer data from the database
+        $reviewer = Reviewer::where('email', $results['email'])->first();
         
         return view('result', ['results' => $results]);
     }
 
-//     public function admin()
-//     {
-//         $students = Student::all();
-//         return view('admin', ['students' => $students]);
-//     }
+    public function admin()
+    {
+        $reviewers = Reviewer::all();
+        return view('admin', ['reviewers' => $reviewers]);
+    }
 
 //     public function edit($id)
 //     {

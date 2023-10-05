@@ -15,17 +15,23 @@
             <div class="row">
                 <!-- Image Column -->
                 <div class="col-md-6">
-                    @if(isset($results['image']))
-                        <img src="{{ asset('storage/images/'.$results['image']) }}" style="height: 250px">
-                    @endif
+                    @foreach($results as $key => $result)
+                        @if($loop->last)
+                            <img src="{{ asset('storage/images/'.$result) }}" style="height: 300px; width: 200px">
+                        @endif
+                    @endforeach
                 </div>
+
                 <!-- Data Column -->
                 <div class="col-md-6">
                     @foreach($results as $key => $result)
-                        <div class="p-1">
-                            <strong>{{ $key }}:</strong> {{ $result }}
-                        </div>
+                        @if(!$loop->last)
+                            <div class="p-1">
+                                <strong>{{ $key }}:</strong> {{ $result }}
+                            </div>
+                        @endif
                     @endforeach
+
                     @if (session('status'))
                         <div class="alert alert-success mt-3">
                             {{ session('status') }}
