@@ -21,7 +21,7 @@
 <body style="background-color: pink">
     <div class="container main-content" width="200">
         <div class="position-absolute top-50 start-50 translate-middle bg-light bg-gradient text-dark rounded" style="box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);">
-            <form method="POST" action="/form" class="p-5" enctype="multipart/form-data"> 
+            <form method="POST" action="/form" class="p-5" enctype="multipart/form-data">
                 @csrf
                 <div class="text-center fw-bold mb-5">
                     BEAUTY PRODUCT REVIEW FORM
@@ -33,7 +33,7 @@
                     <div class="alert alert-danger fs-6 text">{{ $message }}</div>
                     @enderror
                 </div>
-                
+
                 <div class="input-group mt-3">
                     <span class="input-group-text">Email</span>
                     <input type="email" class="form-control wide-input" placeholder="Email" aria-describedby="email" id="email" name="email">
@@ -41,15 +41,15 @@
                     <div class="alert alert-danger fs-6 text">{{ $message }}</div>
                     @enderror
                 </div>
-                
+
                 <div class="input-group mt-3">
                     <span class="input-group-text">Phone Number</span>
-                    <input type="text" class="form-control wide-input" placeholder="Phone Number" aria-describedby="phone" id="phone" name="phone">
+                    <input type="tel" class="form-control wide-input" placeholder="Phone Number" aria-describedby="phone" id="phone" name="phone">
                     @error('phone')
                     <div class="alert alert-danger fs-6 text">{{ $message }}</div>
                     @enderror
                 </div>
-                
+
                 <div class="input-group mt-3">
                     <span class="input-group-text">Product Name</span>
                     <input type="text" class="form-control wide-input" placeholder="Product Name" aria-describedby="product" id="product" name="product">
@@ -65,7 +65,7 @@
                     <div class="alert alert-danger fs-6 text">{{ $message }}</div>
                     @enderror
                 </div>
-                
+
                 <div class="input-group mt-3">
                     <span class="input-group-text">Product Rating</span>
                     <input type="float" class="form-control wide-input" placeholder="Between 2.50 and 99.99" aria-describedby="rating" id="rating" name="rating">

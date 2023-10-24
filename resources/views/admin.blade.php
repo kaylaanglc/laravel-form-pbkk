@@ -67,7 +67,7 @@
             background-color: #f2f2f2;
         }
 
-        /* Style for buttons
+        Style for buttons
         .btn {
             padding: 5px 10px;
             background-color: #007bff;
@@ -82,7 +82,7 @@
 
         .btn.delete {
             background-color: #dc3545;
-        } */
+        }
     </style>
 </head>
 <body>
@@ -100,6 +100,7 @@
                     <th>Product Name</th>
                     <th>Product Image</th>
                     <th>Product Rating</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -117,6 +118,14 @@
                         @endif
                     </td>
                     <td>{{ $reviewer->rating }}</td>
+                    <td>
+                        <a href="{{ route('admin.edit', ['id' => $reviewer->id]) }}" class="btn edit">Edit</a>
+                        <form action="{{ route('admin.delete', ['id' => $reviewer->id]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn delete">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
 
@@ -131,7 +140,7 @@
                     {{ session('error') }}
                 </div>
                 @endif
-                
+
             </tbody>
         </table>
     </div>
